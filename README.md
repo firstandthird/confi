@@ -1,1 +1,1 @@
-# Confy
+# Confi

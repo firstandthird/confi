@@ -1,4 +1,4 @@
 test:
-	cd tests && ../node_modules/.bin/nodeunit confy.test.js
+	cd tests && ../node_modules/.bin/nodeunit confi.test.js
 
 .PHONY: test

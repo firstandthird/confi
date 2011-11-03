@@ -1,13 +1,13 @@
-var confy = require('../');
+var confi = require('../');
 
 exports.testDefault = function(t) {
-  var config = confy.load();
+  var config = confi.load();
   t.equal(config.host, 'localhost');
   t.done();
 };
 
 exports.testDev = function(t) {
-  var config = confy.load();
+  var config = confi.load();
   t.equal(config.host, 'localhost');
   t.equal(config.apikey, 'asdfasdf');
   t.done();
@@ -15,7 +15,7 @@ exports.testDev = function(t) {
 
 
 exports.testProd = function(t) {
-  var config = confy.load({ env: "production"});
+  var config = confi.load({ env: "production"});
   t.equal(config.host, 'prod');
   t.done();
 };
