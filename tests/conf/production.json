@@ -1,3 +1,4 @@
 {
+  //cjson lib lets us have comments in our json!
   "host": "prod"
 }
