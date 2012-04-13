@@ -1,3 +1,6 @@
 {
-  "apikey": "asdfasdf"
+  "apikey": "asdfasdf",
+  "analytics": {
+    "enabled": false
+  }
 }
