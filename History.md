@@ -1,4 +1,10 @@
 
+0.0.6 / 2012-04-17 
+==================
+
+  * would help to make the change everywhere
+  * changed configDirectory option to path
+
 0.0.5 / 2012-04-17 
 ==================
 
