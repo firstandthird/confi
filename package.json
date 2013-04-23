@@ -15,5 +15,8 @@
   "devDependencies": {
     "nodeunit": "*"
   },
-  "keywords": ["config", "settings", "env"]
+  "keywords": ["config", "settings", "env"],
+  "scripts": {
+    "test": "cd tests && nodeunit ."
+  }
 }
