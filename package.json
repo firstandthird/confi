@@ -9,8 +9,8 @@
     "url": "https://github.com/jgallen23/confi.git"
   },
   "dependencies": {
-    "aug": "*",
-    "cjson": "*"
+    "aug": "0.0.5",
+    "cjson": "0.2.1"
   },
   "devDependencies": {
     "nodeunit": "*"
