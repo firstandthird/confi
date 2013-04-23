@@ -1,4 +1,11 @@
 
+0.2.1 / 2013-04-22 
+==================
+
+  * updated path.existsSync to use fs for node 0.8
+  * added npm test
+  * specific versions for dep
+
 0.2.0 / 2012-05-04 
 ==================
 
