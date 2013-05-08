@@ -52,3 +52,15 @@ exports.testUserWithPath = function(t) {
   t.equal(config.analytics.enabled, true);
   t.done();
 };
+
+exports.testYAML = function(t) {
+  confi.reset();
+  var config = confi.load({
+    env: 'yaml'
+  });
+
+  t.equal(config.analytics.enabled, false);
+  t.equal(config.yaml, true);
+  t.done();
+
+};

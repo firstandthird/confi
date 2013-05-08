@@ -13,9 +13,14 @@
     "cjson": "0.2.1"
   },
   "devDependencies": {
-    "nodeunit": "*"
+    "nodeunit": "*",
+    "js-yaml": "~2.0.5"
   },
-  "keywords": ["config", "settings", "env"],
+  "keywords": [
+    "config",
+    "settings",
+    "env"
+  ],
   "scripts": {
     "test": "cd tests && nodeunit ."
   }
