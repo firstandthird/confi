@@ -1,7 +1,7 @@
 {
   "name": "confi",
   "description": "a simple configuration library",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "homepage": "https://github.com/jgallen23/confi",
   "author": "Greg Allen <@jgaui> (http://jga.me)",
   "repository": {
