@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "aug": "0.0.5",
-    "cjson": "0.2.1"
+    "cjson": "0.2.1",
+    "js-yaml": "~2.0.5"
   },
   "devDependencies": {
-    "nodeunit": "*",
-    "js-yaml": "~2.0.5"
+    "nodeunit": "*"
   },
   "keywords": [
     "config",
