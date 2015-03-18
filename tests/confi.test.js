@@ -18,6 +18,7 @@ exports.testDev = function(t) {
   t.equal(config.analytics.enabled, false);
   t.equal(config.analytics.profile, 'ga-xxx');
   t.equal(config.isTest, true);
+  t.equal(config.testHost, 'localhost/test/path');
   t.equal(config.env, 'dev');
   t.done();
 };
