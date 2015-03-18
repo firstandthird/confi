@@ -21,6 +21,8 @@ exports.testDev = function(t) {
   t.equal(config.isTest, true);
   t.equal(config.testHost, 'localhost/test/path');
   t.equal(config.ENV.testEnv, 'test');
+  t.equal(config.testDefault, '123456');
+  t.equal(config.testDefault2, 'localhost');
   t.equal(config.env, 'dev');
   t.done();
 };

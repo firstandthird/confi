@@ -1,4 +1,6 @@
 {
   "isTest": true,
-  "testHost": "{{host}}/test/path"
+  "testHost": "{{host}}/test/path",
+  "testDefault": "{{default ENV.invalid 123456}}",
+  "testDefault2": "{{default host 'nope'}}"
 }
