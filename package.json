@@ -11,6 +11,7 @@
   "dependencies": {
     "aug": "0.0.5",
     "cjson": "0.2.1",
+    "glob": "^5.0.3",
     "js-yaml": "~2.0.5"
   },
   "devDependencies": {

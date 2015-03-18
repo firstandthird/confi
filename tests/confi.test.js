@@ -17,6 +17,7 @@ exports.testDev = function(t) {
   t.equal(config.apikey, 'asdfasdf');
   t.equal(config.analytics.enabled, false);
   t.equal(config.analytics.profile, 'ga-xxx');
+  t.equal(config.isTest, true);
   t.equal(config.env, 'dev');
   t.done();
 };
@@ -36,7 +37,7 @@ exports.testUser = function(t) {
   confi.reset();
   var config = confi.load({
     env: 'dev',
-    userConfig: true 
+    userConfig: true
   });
   t.equal(config.analytics.enabled, true);
   t.done();
