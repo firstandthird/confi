@@ -1,4 +1,13 @@
 
+0.4.0 / 2015-03-18
+==================
+
+  * Exposes process.env
+  * Allows variable variables :inception:
+  * Allows multiple config files per environment.
+  * Removes singleton.
+
+
 0.3.1 / 2013-05-07 
 ==================
 
