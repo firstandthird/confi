@@ -1,4 +1,11 @@
 
+0.5.0 / 2015-03-18
+==================
+
+  * Merge pull request #9 from firstandthird/feature/default-helper
+  * Switched to handlebars to support default value helper.
+
+
 0.4.0 / 2015-03-18
 ==================
 
