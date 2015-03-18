@@ -11,6 +11,7 @@ exports.testDefault = function(t) {
 };
 
 exports.testDev = function(t) {
+  process.env.testEnv = 'test';
   confi.reset();
   var config = confi.load();
   t.equal(config.host, 'localhost');
@@ -19,6 +20,7 @@ exports.testDev = function(t) {
   t.equal(config.analytics.profile, 'ga-xxx');
   t.equal(config.isTest, true);
   t.equal(config.testHost, 'localhost/test/path');
+  t.equal(config.ENV.testEnv, 'test');
   t.equal(config.env, 'dev');
   t.done();
 };
