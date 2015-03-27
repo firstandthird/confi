@@ -10,6 +10,15 @@ exports.testDefault = function(t) {
   t.done();
 };
 
+exports.testMultiplePaths = function(t) {
+  confi.reset();
+  var config = confi.load({ env: 'default', path: ['./conf', './conf2'] });
+  t.equal(config.host, 'localhost');
+  t.equal(config.env, 'default');
+  t.equals(config.multiple, true);
+  t.done();
+};
+
 exports.testDev = function(t) {
   process.env.testEnv = 'test';
   confi.reset();
