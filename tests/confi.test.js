@@ -32,6 +32,7 @@ exports.testDev = function(t) {
   t.equal(config.ENV.testEnv, 'test');
   t.equal(config.testDefault, '123456');
   t.equal(config.testDefault2, 'localhost');
+  t.equal(config.testDefault3, '123456');
   t.equal(config.env, 'dev');
   t.done();
 };
