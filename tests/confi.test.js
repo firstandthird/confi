@@ -1,7 +1,6 @@
 var confi = require('../');
 
 exports.testDefault = function(t) {
-  confi.reset();
   var config = confi.load({ env: 'default' });
   t.equal(config.host, 'localhost');
   t.equal(config.analytics.enabled, true);
@@ -11,7 +10,6 @@ exports.testDefault = function(t) {
 };
 
 exports.testMultiplePaths = function(t) {
-  confi.reset();
   var config = confi.load({ env: 'default', path: ['./conf', './conf2'] });
   t.equal(config.host, 'localhost');
   t.equal(config.env, 'default');
@@ -21,7 +19,6 @@ exports.testMultiplePaths = function(t) {
 
 exports.testDev = function(t) {
   process.env.testEnv = 'test';
-  confi.reset();
   var config = confi.load();
   t.equal(config.host, 'localhost');
   t.equal(config.apikey, 'asdfasdf');
@@ -38,7 +35,6 @@ exports.testDev = function(t) {
 };
 
 exports.testProd = function(t) {
-  confi.reset();
   var config = confi.load({ env: "production"});
   t.equal(config.analytics.enabled, true);
   t.equal(config.analytics.profile, 'ga-xxx');
@@ -49,7 +45,6 @@ exports.testProd = function(t) {
 
 exports.testUser = function(t) {
   console.log('This test won\'t pass unless your username is jga :/');
-  confi.reset();
   var config = confi.load({
     env: 'dev',
     userConfig: true
@@ -60,7 +55,6 @@ exports.testUser = function(t) {
 
 exports.testUserWithPath = function(t) {
   console.log('This test won\'t pass unless your username is jga :/');
-  confi.reset();
   var config = confi.load({
     env: 'dev',
     userConfig: __dirname + '/conf/users'
@@ -70,7 +64,6 @@ exports.testUserWithPath = function(t) {
 };
 
 exports.testYAML = function(t) {
-  confi.reset();
   var config = confi.load({
     env: 'yaml'
   });
