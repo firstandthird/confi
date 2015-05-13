@@ -1,4 +1,13 @@
 
+0.7.0 / 2015-05-13
+==================
+
+  * remove reset from tests
+  * {{require file}} helper
+  * added CWD as current working directory variable
+  * Loops through the parsed output up to 10 times to make sure nested variables are processed.
+
+
 0.6.0 / 2015-03-26
 ==================
 
