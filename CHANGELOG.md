@@ -1,4 +1,12 @@
 
+0.8.0 / 2015-06-25
+==================
+
+  * be able to register a new helper with confi.registerHelper
+  * random helper
+  * jshint fixes
+
+
 0.7.0 / 2015-05-13
 ==================
 
