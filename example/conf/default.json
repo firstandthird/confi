@@ -1,3 +1,9 @@
 {
-  "test": 123
+  "test": true,
+  "sub" : {
+    "enabled" : false,
+    "isWorking" : true
+  },
+  "var2" : "{{test}}",
+  "var3" : "{{sub.enabled}}"
 }

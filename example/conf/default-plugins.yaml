@@ -1,0 +1,6 @@
+var1 : true
+analytics:
+  enabled: false
+  recursiveVar1 : '{{ var1 }}'
+yaml: '{{ var1 }}'
+yaml2: '{{ analytics.recursiveVar1 }}'
