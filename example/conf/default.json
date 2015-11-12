@@ -4,6 +4,8 @@
     "enabled" : false,
     "isWorking" : true
   },
+  "js": "{{ [1,2].join(',') }}",
+  "math": "{{ 10*50 }}",
   "var2" : "{{test}}",
   "var3" : "{{sub.enabled}}"
 }
