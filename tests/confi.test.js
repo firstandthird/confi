@@ -1,5 +1,4 @@
 var confi = require('../');
-
 exports.testDefault = function(t) {
   var config = confi.load({ env: 'default' });
   t.equal(config.host, 'localhost');
