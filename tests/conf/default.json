@@ -1,8 +1,0 @@
-{
-  "host": "localhost",
-  "apikey": "",
-  "analytics": {
-    "enabled": true,
-    "profile": "ga-xxx"
-  }
-}

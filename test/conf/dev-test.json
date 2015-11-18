@@ -1,0 +1,7 @@
+{
+  "isTest": true,
+  "testHost": "{{host}}/test/path",
+  "testDefault": 123456,
+  "testDefault2": "{{ host }}",
+  "testDefault3": "{{testDefault}}"
+}

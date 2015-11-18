@@ -3,11 +3,10 @@ var assert = chai.assert;
 var should = chai.should();
 var confi = require("../")
 
-
 describe('basic json parsing', function(){
   var content;
   before(function(done){
-    content = confi.load({ env: 'plugin-default', path:["./test/conf"]});
+    content = confi({ env: 'plugin-default', path:["./test/conf"]});
     done();
   })
   it('should be able to parse literals', function(done){
@@ -45,14 +44,14 @@ describe('basic json parsing', function(){
 describe('basic yaml parsing', function(){
   var content;
   before(function(done){
-    content = confi.load({env:'default', path:["./test/conf"]});
+    content = confi({env:'default', path:["./test/conf"]});
     done();
-  })
+  });
   it('should be able to parse literals', function(done){
     assert.typeOf(content.analytics.var1, 'number');
     assert.equal(content.analytics.var1, 237);
     assert.typeOf(content.analytics.enabled, 'boolean');
-    assert.equal(content.analytics.enabled, false);
+    assert.equal(content.analytics.enabled, true);
     assert.typeOf(content.analytics.string, 'string');
     assert.equal(content.analytics.string, 'this is a string');
     done();
@@ -61,7 +60,7 @@ describe('basic yaml parsing', function(){
     assert.typeOf(content.yaml2, 'boolean');
     assert.equal(content.yaml2, true);
     assert.typeOf(content.yaml3, 'boolean');
-    assert.equal(content.yaml3, false);
+    assert.equal(content.yaml3, true);
     done();
   });
   it ('should be able to insert a whole sub-object', function(done){
