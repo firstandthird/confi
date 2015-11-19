@@ -1,0 +1,14 @@
+{
+  "plugin" : true,
+  "metrics": {
+    "var1": 237,
+    "enabled": false,
+    "string" : "this is a string"
+  },
+  "json": true,
+  "json2": "{{json}}",
+  "json3": "{{metrics.enabled}}",
+  "json_subobject": "{{metrics}}",
+  "json_math1": "{{ 20+30}}",
+  "json_js1": "{{ [1,2,3].join(',')}}"
+}

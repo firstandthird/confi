@@ -45,22 +45,22 @@ describe('confi', function(){
     assert.equal(config.env, 'production');
     done();
   });
-  it('can open a user-specific env', function(done){
-    console.log('This test won\'t pass unless your username is jga :/');
-    var config = confi({
-      env: 'dev',
-      userConfig: true
-    });
-    assert.equal(config.analytics.enabled, true);
+  it('can open yaml files', function(done){
+    var config = confi({env:"default"})
+    assert.equal(config.yaml, true);
     done();
   });
-  it('can open a user-specific env with a path', function(done){
-    console.log('This test won\'t pass unless your username is jga :/');
-    var config = confi({
-      env: 'dev',
-      userConfig: __dirname + '/conf/users'
-    });
-    assert.equal(config.analytics.enabled, true);
+  it('can open json files', function(done){
+    var config = confi({env:"default"})
+    assert.equal(config.json, true);
     done();
-  })
+  });
+  it('opens files with the environment prefix (eg default-plugin.json, default-route.yaml))', function(done){
+    var config = confi({env:"default"})
+    assert.equal(config.auth, true);
+    assert.equal(config.plugin, true);
+    assert.equal(config.blah, true);
+    done();
+  });
+
 });
