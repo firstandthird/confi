@@ -11,7 +11,6 @@
   "dependencies": {
     "aug": "0.0.5",
     "glob": "^5.0.3",
-    "handlebars": "^3.0.0",
     "varson": "^0.0.1",
     "parse-dir": "^0.0.2"
   },
