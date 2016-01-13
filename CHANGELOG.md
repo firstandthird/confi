@@ -1,4 +1,9 @@
 
+1.0.0 / 2016-01-13
+==================
+
+  * uses varson and parsedir to handle parsing duties
+
 0.8.0 / 2015-06-25
 ==================
 
