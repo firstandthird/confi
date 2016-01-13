@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "aug": "0.0.5",
-    "varson": "^0.0.1",
-    "parse-dir": "^0.0.2"
+    "parse-dir": "0.0.2",
+    "varson": "0.0.1"
   },
   "devDependencies": {
+    "aug": "0.0.5",
     "chai": "^3.4.1",
+    "hapi": "^12.1.0",
     "mocha": "^2.3.4"
   },
   "keywords": [
