@@ -1,12 +1,10 @@
+/*global describe, it*/
 var chai = require('chai');
 var assert = chai.assert;
-var should = chai.should();
-var confi = require("../")
+var confi = require('../');
 
-
-
-describe('confi', function(){
-  it('can open the default file ', function(done){
+describe('confi', function() {
+  it('can open the default file ', function(done) {
     var config = confi({ env: 'default' });
     assert.equal(config.host, 'localhost');
     assert.equal(config.analytics.enabled, true);
@@ -14,14 +12,14 @@ describe('confi', function(){
     assert.equal(config.env, 'default');
     done();
   });
-  it('can open multiple paths', function(done){
+  it('can open multiple paths', function(done) {
     var config = confi({ env: 'default', path: ['./conf', './conf2'] });
     assert.equal(config.host, 'localhost');
     assert.equal(config.env, 'default');
     assert.equal(config.multiple, true);
     done();
   });
-  it('can open the dev env', function(done){
+  it('can open the dev env', function(done) {
     process.env.testEnv = 'test';
     var config = confi();
     assert.equal(config.host, 'localhost');
@@ -37,30 +35,29 @@ describe('confi', function(){
     assert.equal(config.env, 'dev');
     done();
   });
-  it('can open the production env', function(done){
-    var config = confi({ env: "production"});
+  it('can open the production env', function(done) {
+    var config = confi({ env: 'production' });
     assert.equal(config.analytics.enabled, true);
     assert.equal(config.analytics.profile, 'ga-xxx');
     assert.equal(config.host, 'prod');
     assert.equal(config.env, 'production');
     done();
   });
-  it('can open yaml files', function(done){
-    var config = confi({env:"default"})
+  it('can open yaml files', function(done) {
+    var config = confi({ env: 'default' });
     assert.equal(config.yaml, true);
     done();
   });
-  it('can open json files', function(done){
-    var config = confi({env:"default"})
+  it('can open json files', function(done) {
+    var config = confi({ env: 'default' });
     assert.equal(config.json, true);
     done();
   });
-  it('opens files with the environment prefix (eg default-plugin.json, default-route.yaml))', function(done){
-    var config = confi({env:"default"})
+  it('opens files with the environment prefix (eg default-plugin.json, default-route.yaml))', function(done) {
+    var config = confi({ env: 'default' });
     assert.equal(config.auth, true);
     assert.equal(config.plugin, true);
     assert.equal(config.blah, true);
     done();
   });
-
 });
