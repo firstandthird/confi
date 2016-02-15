@@ -1,4 +1,11 @@
 
+1.1.0 / 2016-02-15
+==================
+
+  * updated dependencies
+  * fixed linting errors
+  * added linting
+
 1.0.0 / 2016-01-13
 ==================
 
