@@ -15,6 +15,10 @@
   },
   "devDependencies": {
     "chai": "^3.4.1",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^5.0.1",
+    "eslint-config-firstandthird": "^1.4.0",
+    "eslint-plugin-react": "^3.16.1",
     "mocha": "^2.3.4"
   },
   "keywords": [
@@ -23,6 +27,7 @@
     "env"
   ],
   "scripts": {
-    "test": "cd test && mocha ."
+    "test": "cd test && mocha .",
+    "lint": "eslint ."
   }
 }
