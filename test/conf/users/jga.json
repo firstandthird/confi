@@ -1,5 +1,3 @@
 {
-  "analytics": {
-    "enabled": true
-  }
+  "apikey": "jga-key"
 }

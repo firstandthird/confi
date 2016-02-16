@@ -60,4 +60,23 @@ describe('confi', function() {
     assert.equal(config.blah, true);
     done();
   });
+
+  it('pulls in user config on top of default and env', function(done) {
+    var config = confi({ env: 'dev', user: 'jga' });
+    assert.equal(config.apikey, 'jga-key');
+    done();
+  });
+
+  it('should pass in context', function(done) {
+    var config = confi({
+      env: 'context',
+      context: {
+        random: function() {
+          return Math.random();
+        }
+      }
+    });
+    assert.equal(typeof config.context.random, 'number');
+    done();
+  });
 });
