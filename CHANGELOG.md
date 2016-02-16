@@ -1,4 +1,10 @@
 
+1.2.0 / 2016-02-16
+==================
+
+  * pass in username instead of reading from env var
+  * be able to pass in context to set functions, other data before running
+
 1.1.0 / 2016-02-15
 ==================
 
