@@ -79,4 +79,15 @@ describe('confi', function() {
     assert.equal(typeof config.context.random, 'number');
     done();
   });
+  it('throws an error if any files fail to parse', function(done) {
+    try{
+      var config = confi({ env: 'default', path: ['./dysfunctional'] });
+      // if we ever reach this line then something didn't work:
+      assert.equal(true, false);
+    } catch (exc) {
+      assert.equal(exc.message, 'Unable to parse file default.yaml')
+    }
+    done();
+  });
+
 });
