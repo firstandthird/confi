@@ -1,4 +1,11 @@
 
+2.0.0 / 2016-05-20
+==================
+
+  * updated varson to 0.1.0
+  * es6 and linted
+  * will throw an error if it can't parse any file
+
 1.2.0 / 2016-02-16
 ==================
 
