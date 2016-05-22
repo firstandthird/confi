@@ -1,7 +1,7 @@
 {
   "name": "confi",
   "description": "a simple configuration library",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "homepage": "https://github.com/firstandthird/confi",
   "author": "First+Third",
   "repository": {
