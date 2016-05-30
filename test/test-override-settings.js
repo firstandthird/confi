@@ -91,6 +91,23 @@ describe('confi', () => {
     assert.equal(typeof config.getRandomNumber, 'undefined');
     done();
   });
+
+  //unsupported right now
+  it.skip('should support helper functions that return functions', (done) => {
+    const config = confi({
+      env: 'function-helper',
+      helpers: {
+        getFunction: (value) => {
+          return function() {
+            return value;
+          };
+        }
+      }
+    });
+    assert.equal(typeof config.context.fn, 'function');
+    assert.equal(config.context.fn(), 'some value');
+    done();
+  });
   it('throws an error if any files fail to parse', (done) => {
     try {
       const config = confi({ env: 'default', path: ['./dysfunctional'] });

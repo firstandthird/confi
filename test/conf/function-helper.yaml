@@ -1,0 +1,2 @@
+context:
+  fn: '{{getFunction("some value")}}'
