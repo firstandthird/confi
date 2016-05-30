@@ -68,16 +68,27 @@ describe('confi', () => {
     done();
   });
 
-  it('should pass in context', (done) => {
+  it('should allow additional context to be passed directly into confi', (done) => {
+    const config = confi({
+      context: {
+        customData: true
+      }
+    });
+    assert.equal(config.customData, true);
+    done();
+  });
+
+
+  it('should support helper functions', (done) => {
     const config = confi({
       env: 'context',
-      context: {
-        random: () => {
-          return Math.random();
-        }
+      helpers: {
+        getRandomNumber: () => Math.random()
       }
     });
     assert.equal(typeof config.context.random, 'number');
+    //make sure it doesn't get added to data
+    assert.equal(typeof config.getRandomNumber, 'undefined');
     done();
   });
   it('throws an error if any files fail to parse', (done) => {
