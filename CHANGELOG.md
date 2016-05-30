@@ -1,4 +1,9 @@
 
+2.1.0 / 2016-05-30
+==================
+
+  * added helpers that are functions that can be called, but don't get added to config object
+
 2.0.2 / 2016-05-22
 ==================
 
