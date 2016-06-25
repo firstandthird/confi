@@ -1,4 +1,13 @@
 
+2.1.1 / 2016-06-24
+==================
+
+  * updated varson to 0.1.3
+  * travisci badge added to readme, covers node 4,5,6
+  * added some more node versions to travis
+  * travis!
+  * added a test for an unsupported, future feature
+
 2.1.0 / 2016-05-30
 ==================
 
