@@ -1,0 +1,13 @@
+host: "localhost"
+analytics:
+  var1 : 237
+  enabled: true
+  string: "this is a string"
+  profile: "ga-xxx"
+yaml: true
+yaml2: '{{yaml}}'
+yaml3: '{{analytics.enabled}}'
+subobject : '{{analytics}}'
+math1: '{{ 20+30}}'
+js1 : '{{ [1,2,3].join(",")}}'
+apikey: ""
