@@ -13,10 +13,8 @@ describe('confi file support', () => {
     // should have loaded conf3/useit.yaml but not donotload-this.yaml:
     assert.equal(config.host, 'localhost');
     assert.equal(config.donotloadthis, undefined);
-    // should have loaded conf3/useit-auth.yaml since we are in default env:
-    assert.equal(config.auth, true);
-    // should have loaded conf3/useit-dev since we are in default env:
-    assert.equal(config.dev, true);
+    // should not have loaded conf3/useit-prod since we are in default env:
+    assert.equal(config.prod, undefined);
     done();
   });
   it('can use a prefix with dev env to selectively filter which files to load', (done) => {
@@ -26,12 +24,25 @@ describe('confi file support', () => {
     });
     // should have loaded conf3/useit.yaml (we also load this no matter the env) but not donotload-this.yaml:
     assert.equal(config.host, 'localhost');
-    // should not have loaded conf/useit-auth.yaml since we are in dev env:
-    assert.equal(config.auth, undefined);
+    assert.equal(config.donotloadthis, undefined);
     // should have not loaded conf3/useit-prod.yaml since we are using the dev env:
     assert.equal(config.prod, undefined);
-    // should have loaded conf2/useit-dev.yaml since we are in the dev env:
+    // should have loaded conf3/useit-dev.yaml since we are in the dev env:
     assert.equal(config.dev, true);
+    done();
+  });
+  it('can use a prefix with prod env to selectively filter which files to load', (done) => {
+    const config = confi({
+      env: 'prod',
+      path: [{ path: path.join('.', 'conf3'), prefix: 'useit' }]
+    });
+    // should have loaded conf3/useit.yaml (we also load this no matter the env) but not donotload-this.yaml:
+    assert.equal(config.host, 'localhost');
+    assert.equal(config.donotloadthis, undefined);
+    // should have loaded conf3/useit-prod.yaml since we are using the prod env:
+    assert.equal(config.prod, true);
+    // should not have loaded conf3/useit-dev.yaml since we are in the prod env:
+    assert.equal(config.dev, undefined);
     done();
   });
 });
