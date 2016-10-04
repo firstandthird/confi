@@ -1,4 +1,11 @@
 
+3.0.0 / 2016-10-04
+==================
+
+  * updated varson to 0.4.0
+  * reads from CWD/package.json (#28)
+  * Confi support for file prefix (#27)
+
 2.3.0 / 2016-07-02
 ==================
 
