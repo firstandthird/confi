@@ -1,6 +1,7 @@
 'use strict';
 /*global describe, it*/
 const chai = require('chai');
+const path = require('path');
 const assert = chai.assert;
 const confi = require('../');
 
@@ -32,6 +33,10 @@ describe('confi package.json support', () => {
       package: 'conf4'
     });
     assert.equal(config.goodThings.comeIn, 'small packages');
+    const config2 = confi({
+      package: path.join('conf4', 'package.json')
+    });
+    assert.equal(config2.goodThings.comeIn, 'small packages');
     done();
   });
 });
