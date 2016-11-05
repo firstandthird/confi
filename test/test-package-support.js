@@ -27,4 +27,11 @@ describe('confi package.json support', () => {
     assert.equal(config.apikey, 'asdfasdf');
     done();
   });
+  it('will use an alternative package.json when the "package" option is a relative path', (done) => {
+    const config = confi({
+      package: 'conf4'
+    });
+    assert.equal(config.goodThings.comeIn, 'small packages');
+    done();
+  });
 });
