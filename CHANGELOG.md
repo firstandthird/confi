@@ -1,4 +1,9 @@
 
+3.2.0 / 2016-11-06
+==================
+
+  * options.package can also be a path to a package.json (#29)
+
 3.1.1 / 2016-10-21
 ==================
 
