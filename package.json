@@ -9,9 +9,9 @@
     "url": "https://github.com/firstandthird/confi.git"
   },
   "dependencies": {
-    "aug": "^0.1.0",
-    "parse-dir": "^0.1.0",
-    "varson": "0.5.1"
+    "aug": "0.1.0",
+    "parse-dir": "0.1.0",
+    "varson": "0.5.2"
   },
   "devDependencies": {
     "chai": "^3.4.1",
