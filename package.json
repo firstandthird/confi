@@ -1,7 +1,7 @@
 {
   "name": "confi",
   "description": "a simple configuration library",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "homepage": "https://github.com/firstandthird/confi",
   "author": "First+Third",
   "repository": {
@@ -16,8 +16,8 @@
   "devDependencies": {
     "chai": "^3.4.1",
     "eslint": "^3.4.0",
-    "eslint-config-firstandthird": "^3.0.2",
-    "eslint-plugin-import": "^1.14.0",
+    "eslint-config-firstandthird": "3.1.0",
+    "eslint-plugin-import": "2.2.0",
     "mocha": "^2.3.4"
   },
   "keywords": [

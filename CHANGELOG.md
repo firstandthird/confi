@@ -1,4 +1,9 @@
 
+3.2.1 / 2016-12-09
+==================
+
+  * update varson dep. set other deps to fixed version
+
 3.2.0 / 2016-11-06
 ==================
 
