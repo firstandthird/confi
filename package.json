@@ -9,7 +9,7 @@
     "url": "https://github.com/firstandthird/confi.git"
   },
   "dependencies": {
-    "aug": "^1.0.0",
+    "aug": "1.0.1",
     "parse-dir": "0.1.0",
     "varson": "0.5.2"
   },
