@@ -4,6 +4,9 @@
     "apikey": "smallPackages",
     "host": "colbert"
   },
+  "won'tUnlockThisDoor": {
+    "goodThings": false
+  },
   "name": "confi-test-thing",
   "description": "a dummy npm package.json used for testing confi support for package.json ",
   "version": "1.0.0",
