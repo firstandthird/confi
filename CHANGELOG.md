@@ -1,4 +1,10 @@
 
+4.1.0 / 2017-01-11
+==================
+
+  * supports 'key' and 'path' for package (#31)
+  * chore(package): update dependencies (#30)
+
 4.0.1 / 2016-12-10
 ==================
 
