@@ -94,11 +94,7 @@ tape.skip('should support helper functions that return functions', (assert) => {
   const config = confi({
     env: 'function-helper',
     helpers: {
-      getFunction: (value) => {
-        return function() {
-          return value;
-        };
-      }
+      getFunction: value => function() { return value; }
     }
   });
   assert.equal(typeof config.context.fn, 'function');
@@ -111,7 +107,7 @@ tape('throws an error if any files fail to parse', (assert) => {
     // if we ever reach this line then something didn't work:
     assert.equal(config, false);
   } catch (exc) {
-    assert.equal(exc.message, 'Unable to parse file default.yaml')
+    assert.equal(exc.message, 'Unable to parse file default.yaml');
   }
   assert.end();
 });
