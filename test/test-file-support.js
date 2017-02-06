@@ -27,7 +27,7 @@ tape('can use a prefix with dev env to selectively filter which files to load', 
   // should have not loaded conf3/useit-prod.yaml since we are using the dev env:
   assert.equal(config.prod, undefined);
   // should have loaded conf3/useit-dev.yaml since we are in the dev env:
-  assert.equal(config.dev, true);
+  assert.equal(config.dev, 1);
   assert.end();
 });
 tape('can use a prefix with prod env to selectively filter which files to load', (assert) => {

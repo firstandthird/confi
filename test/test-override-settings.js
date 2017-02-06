@@ -28,9 +28,9 @@ tape('can open the dev env', (assert) => {
   assert.equal(config.isTest, true);
   assert.equal(config.testHost, 'localhost/test/path');
   assert.equal(config.ENV.testEnv, 'test');
-  assert.equal(config.testDefault, '123456');
+  assert.equal(config.testDefault, 123456);
   assert.equal(config.testDefault2, 'localhost');
-  assert.equal(config.testDefault3, '123456');
+  assert.equal(config.testDefault3, 123456);
   assert.equal(config.env, 'dev');
   assert.end();
 });
