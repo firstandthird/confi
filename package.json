@@ -14,11 +14,11 @@
     "varson": "0.5.3"
   },
   "devDependencies": {
-    "chai": "^3.4.1",
     "eslint": "^3.4.0",
     "eslint-config-firstandthird": "^3.2.0",
     "eslint-plugin-import": "2.2.0",
-    "mocha": "^3.2.0"
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3"
   },
   "keywords": [
     "config",
@@ -26,7 +26,7 @@
     "env"
   ],
   "scripts": {
-    "test": "cd test && mocha .",
+    "test": "cd test && tape test-*.js | tap-spec && cd ..",
     "lint": "eslint ."
   }
 }
