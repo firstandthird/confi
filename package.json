@@ -1,7 +1,7 @@
 {
   "name": "confi",
   "description": "a simple configuration library",
-  "version": "4.1.1",
+  "version": "5.0.0",
   "homepage": "https://github.com/firstandthird/confi",
   "author": "First+Third",
   "repository": {
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "aug": "^1.0.2",
-    "parse-dir": "0.1.0",
+    "parse-dir": "2.0.0",
     "varson": "0.5.3"
   },
   "devDependencies": {
