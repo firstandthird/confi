@@ -1,6 +1,7 @@
 'use strict';
 /*global describe, it*/
-const tape = require('tape');
+const tape = require('tap').test;
+tape.skip = () => {};
 const confi = require('../');
 
 tape('can open the default file ', (assert) => {

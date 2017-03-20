@@ -11,14 +11,14 @@
   "dependencies": {
     "aug": "^1.0.2",
     "parse-dir": "2.0.0",
+    "tap": "^10.3.0",
     "varson": "0.5.3"
   },
   "devDependencies": {
     "eslint": "^3.4.0",
     "eslint-config-firstandthird": "^3.2.0",
     "eslint-plugin-import": "2.2.0",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.6.3"
+    "tap-spec": "^4.1.1"
   },
   "keywords": [
     "config",
@@ -26,7 +26,7 @@
     "env"
   ],
   "scripts": {
-    "test": "cd test && tape test-*.js | tap-spec && cd ..",
+    "test": "cd test && tap test-*.js | tap-spec && cd ..",
     "lint": "eslint ."
   }
 }
