@@ -2,6 +2,8 @@
 /*global describe, it*/
 const tape = require('tape');
 const confi = require('../');
+const fs = require('fs');
+const os = require('os');
 
 tape('can open the default file ', (assert) => {
   const config = confi({ env: 'default' });
@@ -17,6 +19,16 @@ tape('can open multiple paths', (assert) => {
   assert.equal(config.env, 'default');
   assert.equal(config.multiple, true);
   assert.end();
+});
+tape('dev env will look for ~/.confi/{project-name}.yaml', (assert) => {
+  const homePath = path.join(os.homedir(), '.confi', 'my-project.yaml');
+  fs.writeFile(homePath, 'homedir: "the home dir" ', (err) => {
+    const config = confi();
+    assert.equal(config.host, 'localhost');
+    assert.equal(config.env, 'dev');
+    asssert.equal(config.homedir, 'the home dir');
+    assert.end();
+  });
 });
 tape('can open the dev env', (assert) => {
   process.env.testEnv = 'test';
