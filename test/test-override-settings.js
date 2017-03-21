@@ -4,6 +4,7 @@ const tape = require('tape');
 const confi = require('../');
 const fs = require('fs');
 const os = require('os');
+const path = require('path');
 
 tape('can open the default file ', (assert) => {
   const config = confi({ env: 'default' });
@@ -13,6 +14,7 @@ tape('can open the default file ', (assert) => {
   assert.equal(config.env, 'default');
   assert.end();
 });
+
 tape('can open multiple paths', (assert) => {
   const config = confi({ env: 'default', path: ['./conf', './conf2'] });
   assert.equal(config.host, 'localhost');
@@ -20,16 +22,7 @@ tape('can open multiple paths', (assert) => {
   assert.equal(config.multiple, true);
   assert.end();
 });
-tape('dev env will look for ~/.confi/{project-name}.yaml', (assert) => {
-  const homePath = path.join(os.homedir(), '.confi', 'my-project.yaml');
-  fs.writeFile(homePath, 'homedir: "the home dir" ', (err) => {
-    const config = confi();
-    assert.equal(config.host, 'localhost');
-    assert.equal(config.env, 'dev');
-    asssert.equal(config.homedir, 'the home dir');
-    assert.end();
-  });
-});
+
 tape('can open the dev env', (assert) => {
   process.env.testEnv = 'test';
   const config = confi();
@@ -46,6 +39,7 @@ tape('can open the dev env', (assert) => {
   assert.equal(config.env, 'dev');
   assert.end();
 });
+
 tape('can open the production env', (assert) => {
   const config = confi({ env: 'production' });
   assert.equal(config.analytics.enabled, true);
@@ -122,4 +116,14 @@ tape('throws an error if any files fail to parse', (assert) => {
     assert.equal(exc.message, 'Unable to parse file default.yaml');
   }
   assert.end();
+});
+
+tape('dev env will look for ~/.confi/{project-name}.yaml', (assert) => {
+  const homePath = path.join(os.homedir(), '.confi', 'confi.yaml');
+  fs.writeFile(homePath, 'homedir: "the home dir"\n', (err) => {
+    assert.equal(err, null);
+    const config = confi({ env: 'dev' });
+    assert.equal(config.homedir, 'the home dir');
+    assert.end();
+  });
 });
