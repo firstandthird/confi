@@ -120,6 +120,10 @@ tape('throws an error if any files fail to parse', (assert) => {
 
 tape('dev env will look for ~/.confi/{project-name}.yaml', (assert) => {
   const homePath = path.join(os.homedir(), '.confi');
+  console.log('-')
+  console.log('-')
+  console.log('-')
+  console.log(homePath);
   fs.mkdir(homePath, () => {
     fs.writeFile(path.join(homePath, 'confi.yaml'), 'homedir: "the home dir"\n', (err) => {
       if (err) {
