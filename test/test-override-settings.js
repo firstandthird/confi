@@ -112,14 +112,14 @@ tape('throws an error if any files fail to parse', (assert) => {
   assert.end();
 });
 
-tape('dev env will look for ~/.confi/{project-name}.yaml', (assert) => {
+tape('if options.userConfig is set, will look for ~/.confi/{project-name}.yaml', (assert) => {
   const homePath = path.join(os.homedir(), '.confi');
   fs.mkdir(homePath, () => {
     fs.writeFile(path.join(homePath, 'test.yaml'), 'homedir: "the home dir"\n', (err) => {
       if (err) {
         throw err;
       }
-      const config = confi({ env: 'dev' });
+      const config = confi({ env: 'dev', userConfig: true });
       assert.equal(config.homedir, 'the home dir');
       assert.end();
     });
