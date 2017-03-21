@@ -2,6 +2,9 @@
 /*global describe, it*/
 const tape = require('tape');
 const confi = require('../');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
 
 tape('can open the default file ', (assert) => {
   const config = confi({ env: 'default' });
@@ -11,6 +14,7 @@ tape('can open the default file ', (assert) => {
   assert.equal(config.env, 'default');
   assert.end();
 });
+
 tape('can open multiple paths', (assert) => {
   const config = confi({ env: 'default', path: ['./conf', './conf2'] });
   assert.equal(config.host, 'localhost');
@@ -18,6 +22,7 @@ tape('can open multiple paths', (assert) => {
   assert.equal(config.multiple, true);
   assert.end();
 });
+
 tape('can open the dev env', (assert) => {
   process.env.testEnv = 'test';
   const config = confi();
@@ -34,6 +39,7 @@ tape('can open the dev env', (assert) => {
   assert.equal(config.env, 'dev');
   assert.end();
 });
+
 tape('can open the production env', (assert) => {
   const config = confi({ env: 'production' });
   assert.equal(config.analytics.enabled, true);
@@ -57,12 +63,6 @@ tape('opens files with the environment prefix (eg default-plugin.json, default-r
   assert.equal(config.auth, true);
   assert.equal(config.plugin, true);
   assert.equal(config.blah, true);
-  assert.end();
-});
-
-tape('pulls in user config on top of default and env', (assert) => {
-  const config = confi({ env: 'dev', user: 'jga' });
-  assert.equal(config.apikey, 'jga-key');
   assert.end();
 });
 
@@ -110,4 +110,18 @@ tape('throws an error if any files fail to parse', (assert) => {
     assert.equal(exc.message, 'Unable to parse file default.yaml');
   }
   assert.end();
+});
+
+tape('if options.userConfig is set, will look for ~/.confi/{project-name}.yaml', (assert) => {
+  const homePath = path.join(os.homedir(), '.confi');
+  fs.mkdir(homePath, () => {
+    fs.writeFile(path.join(homePath, 'test.yaml'), 'homedir: "the home dir"\n', (err) => {
+      if (err) {
+        throw err;
+      }
+      const config = confi({ env: 'dev', userConfig: true });
+      assert.equal(config.homedir, 'the home dir');
+      assert.end();
+    });
+  });
 });
