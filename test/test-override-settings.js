@@ -119,9 +119,11 @@ tape('throws an error if any files fail to parse', (assert) => {
 });
 
 tape('dev env will look for ~/.confi/{project-name}.yaml', (assert) => {
-  const homePath = path.join(os.homedir(), '.confi', 'confi.yaml');
+  const homePath = path.join(os.homedir(), '.confi', 'test.yaml');
   fs.writeFile(homePath, 'homedir: "the home dir"\n', (err) => {
-    assert.equal(err, null);
+    if (err) {
+      throw err;
+    }
     const config = confi({ env: 'dev' });
     assert.equal(config.homedir, 'the home dir');
     assert.end();
