@@ -66,12 +66,6 @@ tape('opens files with the environment prefix (eg default-plugin.json, default-r
   assert.end();
 });
 
-tape('pulls in user config on top of default and env', (assert) => {
-  const config = confi({ env: 'dev', user: 'jga' });
-  assert.equal(config.apikey, 'jga-key');
-  assert.end();
-});
-
 tape('should allow additional context to be passed directly into confi', (assert) => {
   const config = confi({
     context: {
@@ -120,12 +114,8 @@ tape('throws an error if any files fail to parse', (assert) => {
 
 tape('dev env will look for ~/.confi/{project-name}.yaml', (assert) => {
   const homePath = path.join(os.homedir(), '.confi');
-  console.log('-')
-  console.log('-')
-  console.log('-')
-  console.log(process.cwd())
   fs.mkdir(homePath, () => {
-    fs.writeFile(path.join(homePath, 'confi.yaml'), 'homedir: "the home dir"\n', (err) => {
+    fs.writeFile(path.join(homePath, 'test.yaml'), 'homedir: "the home dir"\n', (err) => {
       if (err) {
         throw err;
       }
