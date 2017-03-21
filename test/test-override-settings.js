@@ -123,7 +123,7 @@ tape('dev env will look for ~/.confi/{project-name}.yaml', (assert) => {
   console.log('-')
   console.log('-')
   console.log('-')
-  console.log(homePath);
+  console.log(process.cwd())
   fs.mkdir(homePath, () => {
     fs.writeFile(path.join(homePath, 'confi.yaml'), 'homedir: "the home dir"\n', (err) => {
       if (err) {
