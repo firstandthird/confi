@@ -111,3 +111,12 @@ tape('throws an error if any files fail to parse', (assert) => {
   }
   assert.end();
 });
+
+tape('should be able to load env vars with a specific prefix with the envVars: <prefix> option', (assert) => {
+  process.env.CONFI_SUBDOC__SUBSUB_DOC1 = 'the first part';
+  process.env.CONFI_SUBDOC__SUBSUB_DOC2 = 'the second part';
+  const config = confi({ envVars: 'CONFI' });
+  assert.equal(config.subdoc.subsubDoc1, 'the first part');
+  assert.equal(config.subdoc.subsubDoc2, 'the second part');
+  assert.end();
+});
