@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "aug": "^1.0.2",
+    "envload": "^0.1.0",
     "parse-dir": "2.0.0",
     "varson": "0.5.3"
   },
