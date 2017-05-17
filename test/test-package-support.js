@@ -5,63 +5,75 @@ const tape = require('tape');
 const confi = require('../');
 
 tape('will use defaults from package.json when the "package" option is true', (assert) => {
-  const config = confi({
+  confi({
     package: true
+  }, (err, config) => {
+    assert.equal(err, null);
+    assert.equal(config.goodThings, true);
+    assert.end();
   });
-  assert.equal(config.goodThings, true);
-  assert.end();
 });
+
 tape('keys/values parsed from package.json overwrite the corresponding keys/values in default conf', (assert) => {
-  const config = confi({
+  confi({
     package: true
+  }, (err, config) => {
+    assert.equal(config.host, 'colbert');
+    assert.end();
   });
-  assert.equal(config.host, 'colbert');
-  assert.end();
 });
+
 tape('keys/values parsed from package.json are overwritten by the corresponding keys/values in env conf', (assert) => {
-  const config = confi({
+  confi({
     package: true,
     env: 'dev'
+  }, (err, config) => {
+    assert.equal(config.apikey, 'asdfasdf');
+    assert.end();
   });
-  assert.equal(config.apikey, 'asdfasdf');
-  assert.end();
 });
+
 tape('will use an alternative package.json when the "package" option is a relative path', (assert) => {
-  const config = confi({
+  confi({
     package: 'conf4'
+  }, (err, config) => {
+    assert.equal(config.goodThings.comeIn, 'small packages');
+    const config2 = confi({
+      package: path.join('conf4', 'package.json')
+    }, (err2, config2) => {
+      assert.equal(config2.goodThings.comeIn, 'small packages');
+      assert.end();
+    });
   });
-  assert.equal(config.goodThings.comeIn, 'small packages');
-  const config2 = confi({
-    package: path.join('conf4', 'package.json')
-  });
-  assert.equal(config2.goodThings.comeIn, 'small packages');
-  assert.end();
 });
 tape('will use "key" field from package.json when the "package" option is an object with that key', (assert) => {
-  const config = confi({
+  confi({
     package: {
       key: "won'tUnlockThisDoor"
     }
+  }, (err, config) => {
+    assert.equal(config.goodThings, false);
+    assert.end();
   });
-  assert.equal(config.goodThings, false);
-  assert.end();
 });
 tape('will get package.json from a specific "path"  when indicated', (assert) => {
-  const config = confi({
+  confi({
     package: {
       path: path.join(__dirname, 'package')
     }
+  }, (err, config) => {
+    assert.equal(config.aProperty, true);
+    assert.end();
   });
-  assert.equal(config.aProperty, true);
-  assert.end();
 });
 tape('will get package.json from a specific "path"  and property when indicated', (assert) => {
-  const config = confi({
+  confi({
     package: {
       key: "won'tUnlockThisDoor",
       path: path.join(__dirname, 'package')
     }
+  }, (err, config) => {
+    assert.equal(config.redHouse, true);
+    assert.end();
   });
-  assert.equal(config.redHouse, true);
-  assert.end();
 });
