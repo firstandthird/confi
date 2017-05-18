@@ -2,6 +2,7 @@
 /*global describe, it*/
 const tape = require('tape');
 const confi = require('../');
+const path = require('path');
 
 tape('can open the default file ', (assert) => {
   confi({ env: 'default' }, (err, config) => {
@@ -10,6 +11,19 @@ tape('can open the default file ', (assert) => {
     assert.equal(config.analytics.enabled, true);
     assert.equal(config.analytics.profile, 'ga-xxx');
     assert.equal(config.env, 'default');
+    assert.end();
+  });
+});
+
+tape('can load a single config file', (assert) => {
+  confi({
+    configFile: path.join(__dirname, 'conf', 'default.yaml')
+  }, (err, config) => {
+    // should have loaded only default.yaml but nothing else:
+    assert.equal(err, null, 'does not error');
+    assert.equal(config.host, 'localhost');
+    assert.equal(config.analytics.enabled, false);
+    assert.equal(config.analytics.profile, 'ga-xxx');
     assert.end();
   });
 });
