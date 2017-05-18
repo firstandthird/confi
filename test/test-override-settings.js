@@ -2,6 +2,7 @@
 /*global describe, it*/
 const tape = require('tape');
 const confi = require('../');
+const path = require('path');
 
 tape('can open the default file ', (assert) => {
   confi({ env: 'default' }, (err, config) => {
@@ -10,6 +11,25 @@ tape('can open the default file ', (assert) => {
     assert.equal(config.analytics.enabled, true);
     assert.equal(config.analytics.profile, 'ga-xxx');
     assert.equal(config.env, 'default');
+    assert.end();
+  });
+});
+
+tape('can open a specified config file ', (assert) => {
+  confi({
+    configFile: path.join(__dirname, 'conf3', 'useit-prod.yaml')
+  }, (err, config) => {
+    assert.equal(err, null);
+    assert.equal(config.prod, true, 'opens the specified config file');
+    assert.equal(config.host, 'localhost', 'opens the default env along with configFile');
+    assert.end();
+  });
+});
+
+tape('can skip opening a path', (assert) => {
+  confi({ path: false }, (err, config) => {
+    assert.equal(err, null);
+    assert.equal(config.host, undefined, 'does not open the path ');
     assert.end();
   });
 });
