@@ -1,7 +1,7 @@
 'use strict';
 /*global describe, it*/
 const path = require('path');
-const tape = require('tape');
+const tape = require('tap').test;
 const confi = require('../');
 
 tape('will use defaults from package.json when the "package" option is true', (assert) => {

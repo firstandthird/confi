@@ -1,7 +1,7 @@
 'use strict';
 /*global describe, it*/
 const confi = require('../');
-const tape = require('tape');
+const tape = require('tap').test;
 const async = require('async');
 const Hapi = require('hapi');
 

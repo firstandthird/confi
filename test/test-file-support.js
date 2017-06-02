@@ -2,7 +2,7 @@
 /*global describe, it*/
 const confi = require('../');
 const path = require('path');
-const tape = require('tape');
+const tape = require('tap').test;
 
 tape('can use a prefix with default env to selectively filter which files to load', (assert) => {
   confi({
