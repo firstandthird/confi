@@ -1,1 +1,1 @@
-var1: '{{get(env.THIS_IS_NOT_DEFINED, "yes it is")}}'
+var1: '{{_get(env.THIS_IS_NOT_DEFINED, "yes it is")}}'
