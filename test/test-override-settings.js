@@ -6,7 +6,7 @@ const confi = require('../');
 const path = require('path');
 
 tape('can open the default file ', (assert) => {
-  confi({ env: 'default' }, (err, config) => {
+  confi({ env: 'default', path: ['./test/conf'] }, (err, config) => {
     assert.equal(err, null);
     assert.equal(config.host, 'localhost');
     assert.equal(config.analytics.enabled, true);
@@ -18,6 +18,7 @@ tape('can open the default file ', (assert) => {
 
 tape('can open a specified config file ', (assert) => {
   confi({
+    path: ['./test/conf'],
     configFile: path.join(__dirname, 'conf3', 'useit-prod.yaml')
   }, (err, config) => {
     assert.equal(err, null);
@@ -36,7 +37,7 @@ tape('can skip opening a path', (assert) => {
 });
 
 tape('can open multiple paths', (assert) => {
-  confi({ env: 'default', path: ['./conf', './conf2'] }, (err, config) => {
+  confi({ env: 'default', path: ['./test/conf', './test/conf2'] }, (err, config) => {
     assert.equal(config.host, 'localhost');
     assert.equal(config.env, undefined);
     assert.equal(config.multiple, true);
@@ -46,7 +47,7 @@ tape('can open multiple paths', (assert) => {
 
 tape('can open the dev env', (assert) => {
   process.env.testEnv = 'test';
-  confi((err, config) => {
+  confi({ path: './test/conf' }, (err, config) => {
     assert.equal(config.host, 'localhost');
     assert.equal(config.apikey, 'asdfasdf');
     assert.equal(config.analytics.enabled, false);
@@ -63,7 +64,7 @@ tape('can open the dev env', (assert) => {
 });
 
 tape('can open the production env', (assert) => {
-  confi({ env: 'production' }, (err, config) => {
+  confi({ env: 'production', path: './test/conf' }, (err, config) => {
     assert.equal(config.analytics.enabled, true);
     assert.equal(config.analytics.profile, 'ga-xxx');
     assert.equal(config.host, 'prod');
@@ -73,19 +74,21 @@ tape('can open the production env', (assert) => {
 });
 
 tape('can open yaml files', (assert) => {
-  confi({ env: 'default' }, (err, config) => {
+  confi({ env: 'default', path: './test/conf' }, (err, config) => {
     assert.equal(config.yaml, true);
     assert.end();
   });
 });
+
 tape('can open json files', (assert) => {
-  confi({ env: 'default' }, (err, config) => {
+  confi({ env: 'default', path: './test/conf' }, (err, config) => {
     assert.equal(config.json, true);
     assert.end();
   });
 });
+
 tape('opens files with the environment prefix (eg default-plugin.json, default-route.yaml))', (assert) => {
-  confi({ env: 'default' }, (err, config) => {
+  confi({ env: 'default', path: './test/conf' }, (err, config) => {
     assert.equal(config.auth, true);
     assert.equal(config.plugin, true);
     assert.equal(config.blah, true);
@@ -94,7 +97,11 @@ tape('opens files with the environment prefix (eg default-plugin.json, default-r
 });
 
 tape('pulls in user config on top of default and env', (assert) => {
-  confi({ env: 'dev', user: 'jga' }, (err, config) => {
+  confi({
+    env: 'dev',
+    user: 'jga',
+    userPath: path.join(__dirname, 'conf', 'users')
+  }, (err, config) => {
     assert.equal(config.apikey, 'jga-key');
     assert.end();
   });
@@ -104,7 +111,8 @@ tape('should allow additional context to be passed directly into confi', (assert
   const config = confi({
     context: {
       customData: true
-    }
+    },
+    path: './test/conf'
   }, (err, config) => {
     assert.equal(config.customData, true);
     assert.end();
@@ -116,7 +124,8 @@ tape('should support helper functions', (assert) => {
     env: 'context',
     helpers: {
       getRandomNumber: () => Math.random()
-    }
+    },
+    path: './test/conf'
   }, (err, config) => {
     assert.equal(typeof config.context.random, 'number');
     //make sure it doesn't get added to data
@@ -131,7 +140,8 @@ tape.skip('should support helper functions that return functions', (assert) => {
     env: 'function-helper',
     helpers: {
       getFunction: value => function() { return value; }
-    }
+    },
+    path: './test/conf'
   }, (err, config) => {
     assert.equal(typeof config.context.fn, 'function');
     assert.equal(config.context.fn(), 'some value');
@@ -140,7 +150,7 @@ tape.skip('should support helper functions that return functions', (assert) => {
 });
 
 tape('callback returns an error if any files fail to parse', (assert) => {
-  confi({ env: 'default', path: ['./dysfunctional'] }, (err, config) => {
+  confi({ env: 'default', path: ['./test/dysfunctional'] }, (err, config) => {
     assert.notEqual(err, null);
     assert.end();
   });
@@ -149,7 +159,7 @@ tape('callback returns an error if any files fail to parse', (assert) => {
 tape('should be able to load env vars with a specific prefix with the envVars: <prefix> option', (assert) => {
   process.env.CONFI_SUBDOC__SUBSUB_DOC1 = 'the first part';
   process.env.CONFI_SUBDOC__SUBSUB_DOC2 = 'the second part';
-  confi({ envVars: 'CONFI' }, (err, config) => {
+  confi({ envVars: 'CONFI', path: './test/conf' }, (err, config) => {
     assert.equal(config.subdoc.subsubDoc1, 'the first part');
     assert.equal(config.subdoc.subsubDoc2, 'the second part');
     assert.end();
