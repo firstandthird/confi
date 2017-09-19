@@ -31,7 +31,7 @@
     "env"
   ],
   "scripts": {
-    "test": "cd test && tap test-*.js",
+    "test": "tap test/test-*.js --cov",
     "lint": "eslint ."
   }
 }

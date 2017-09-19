@@ -3,6 +3,7 @@
 const path = require('path');
 const tape = require('tap').test;
 const confi = require('../');
+process.chdir('test');
 
 tape('will use defaults from package.json when the "package" option is true', (assert) => {
   confi({
@@ -26,7 +27,8 @@ tape('keys/values parsed from package.json overwrite the corresponding keys/valu
 tape('keys/values parsed from package.json are overwritten by the corresponding keys/values in env conf', (assert) => {
   confi({
     package: true,
-    env: 'dev'
+    env: 'dev',
+    path: './conf'
   }, (err, config) => {
     assert.equal(config.apikey, 'asdfasdf');
     assert.end();
