@@ -1,0 +1,6 @@
+isTrue: true
+isFalse: false
+trueValue: 1
+falseValue: -1
+if1: '{{_if(isTrue, trueValue, falseValue)}}'
+if2: '{{_if(isFalse, falseValue, trueValue)}}'
