@@ -11,7 +11,7 @@ tape('can open the default file ', (assert) => {
     assert.equal(config.host, 'localhost');
     assert.equal(config.analytics.enabled, true);
     assert.equal(config.analytics.profile, 'ga-xxx');
-    assert.equal(config.env, undefined);
+    assert.equal(config.env, 'default');
     assert.end();
   });
 });
@@ -39,7 +39,7 @@ tape('can skip opening a path', (assert) => {
 tape('can open multiple paths', (assert) => {
   confi({ env: 'default', path: ['./test/conf', './test/conf2'] }, (err, config) => {
     assert.equal(config.host, 'localhost');
-    assert.equal(config.env, undefined);
+    assert.equal(config.env, 'default');
     assert.equal(config.multiple, true);
     assert.end();
   });
@@ -58,7 +58,7 @@ tape('can open the dev env', (assert) => {
     assert.equal(config.testDefault2, 'localhost');
     assert.equal(config.testDefault3, 123456);
     assert.equal(config.ENV, undefined);
-    assert.equal(config.env, undefined);
+    assert.equal(config.env, 'dev');
     assert.end();
   });
 });
@@ -68,7 +68,7 @@ tape('can open the production env', (assert) => {
     assert.equal(config.analytics.enabled, true);
     assert.equal(config.analytics.profile, 'ga-xxx');
     assert.equal(config.host, 'prod');
-    assert.equal(config.env, undefined);
+    assert.equal(config.env, 'production');
     assert.end();
   });
 });
