@@ -14,7 +14,7 @@
     "envload": "^0.1.0",
     "js-yaml": "^3.8.4",
     "parse-dir": "2.0.0",
-    "varson": "1.0.1",
+    "varson": "2.0.0",
     "wreck": "^12.2.0"
   },
   "devDependencies": {
