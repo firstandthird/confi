@@ -107,14 +107,19 @@ tape('pulls in user config on top of default and env', (assert) => {
   });
 });
 
-tape('should allow additional context to be passed directly into confi', (assert) => {
-  const config = confi({
+tape('should allow additional config and context to be passed directly into confi', (assert) => {
+  confi({
+    config: {
+      customConfig: true
+    },
     context: {
       customData: true
     },
     path: './test/conf'
   }, (err, config) => {
-    assert.equal(config.customData, true);
+    assert.equal(err, null);
+    assert.equal(config.customConfig, true);
+    assert.equal(typeof config.customData, 'undefined');
     assert.end();
   });
 });
