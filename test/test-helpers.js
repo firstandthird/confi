@@ -10,7 +10,10 @@ tape('ms helper', (assert) => {
     }
   }, (err, config) => {
     assert.equal(err, null);
-    assert.equal(config.oneDay, 1000 * 60 * 60 * 24);
+    assert.deepEqual(config, {
+      oneDay: 1000 * 60 * 60 * 24,
+      env: 'dev'
+    });
     assert.end();
   });
 });
@@ -23,7 +26,10 @@ tape('getEnv helper', (assert) => {
     }
   }, (err, config) => {
     assert.equal(err, null);
-    assert.equal(config.test, 'yep');
+    assert.deepEqual(config, {
+      test: 'yep',
+      env: 'dev'
+    });
     assert.end();
   });
 });
@@ -36,7 +42,30 @@ tape('getEnv helper with default', (assert) => {
     }
   }, (err, config) => {
     assert.equal(err, null);
-    assert.equal(config.test, 'nope');
+    assert.deepEqual(config, {
+      test: 'nope',
+      env: 'dev'
+    });
+    assert.end();
+  });
+});
+
+tape('getEnv helper with default', (assert) => {
+  confi({
+    config: {
+      math: '{{add(4, 5)}}'
+    },
+    helpers: {
+      add(a, b) {
+        return a + b;
+      }
+    }
+  }, (err, config) => {
+    assert.equal(err, null);
+    assert.deepEqual(config, {
+      math: 9,
+      env: 'dev'
+    });
     assert.end();
   });
 });
