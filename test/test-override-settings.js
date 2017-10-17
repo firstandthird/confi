@@ -139,6 +139,19 @@ tape('should support helper functions', (assert) => {
   });
 });
 
+tape('includes truthy helper', (assert) => {
+  confi({
+    env: 'truthy',
+    path: './test/conf5'
+  }, (err, config) => {
+    assert.equal(config.stringTrue, true);
+    assert.equal(config.booleanTrue, true);
+    assert.equal(config.stringNumTrue, true);
+    assert.equal(config.numTrue, true);
+    assert.end();
+  });
+});
+
 //unsupported right now
 tape.skip('should support helper functions that return functions', (assert) => {
   confi({

@@ -1,0 +1,4 @@
+stringTrue: '{{truthy("true")}}'
+booleanTrue: '{{truthy(true)}}'
+stringNumTrue: '{{truthy("1")}}'
+numTrue: '{{truthy(1)}}'
