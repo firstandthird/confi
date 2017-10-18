@@ -34,7 +34,6 @@ tape('getEnv helper', (assert) => {
   });
 });
 
-
 tape('getEnv helper with default', (assert) => {
   confi({
     config: {
@@ -66,6 +65,18 @@ tape('getEnv helper with default', (assert) => {
       math: 9,
       env: 'dev'
     });
+    assert.end();
+  });
+});
+
+tape('readFile helper', (assert) => {
+  confi({
+    config: {
+      file: `{{readFile("${__dirname}/conf2/default.yaml")}}`
+    }
+  }, (err, config) => {
+    assert.equal(err, null);
+    assert.equal(config.file.startsWith('multiple: true'), true);
     assert.end();
   });
 });
