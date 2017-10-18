@@ -71,7 +71,19 @@ tape('getEnv helper with default', (assert) => {
 
 tape('includes truthy helper', (assert) => {
   confi({
-    path: './test/conf5'
+    config: {
+      stringAmbiguous: '{{truthy("ambiguous")}}',
+      stringTrue: '{{truthy("true")}}',
+      booleanTrue: '{{truthy(true)}}',
+      stringNumTrue: '{{truthy("1")}}',
+      stringNum2True: '{{truthy("10")}}',
+      numTrue: '{{truthy(1)}}',
+      stringFalse: '{{truthy("false")}}',
+      booleanFalse: '{{truthy(false)}}',
+      stringNumFalse: '{{truthy("-1")}}',
+      numFalse: '{{truthy(-1)}}',
+      stringNum2False: '{{truthy("-10")}}'
+    }
   }, (err, config) => {
     assert.equal(config.stringTrue, true);
     assert.equal(config.booleanTrue, true);
@@ -84,6 +96,7 @@ tape('includes truthy helper', (assert) => {
     assert.equal(config.stringNum2False, false);
     assert.equal(config.numFalse, false);
     assert.equal(config.stringAmbiguous, false);
+    assert.end();
   });
 });
 
