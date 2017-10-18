@@ -34,7 +34,6 @@ tape('getEnv helper', (assert) => {
   });
 });
 
-
 tape('getEnv helper with default', (assert) => {
   confi({
     config: {
@@ -66,6 +65,22 @@ tape('getEnv helper with default', (assert) => {
       math: 9,
       env: 'dev'
     });
+    assert.end();
+  });
+});
+
+tape('includes truthy helper', (assert) => {
+  confi({
+    path: './test/conf5'
+  }, (err, config) => {
+    assert.equal(config.stringTrue, true);
+    assert.equal(config.booleanTrue, true);
+    assert.equal(config.stringNumTrue, true);
+    assert.equal(config.numTrue, true);
+    assert.equal(config.stringFalse, 'false');
+    assert.equal(config.booleanFalse, false);
+    assert.equal(config.stringNumFalse, '-1');
+    assert.equal(config.numFalse, -1);
     assert.end();
   });
 });
