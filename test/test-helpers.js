@@ -2,6 +2,7 @@
 /*global describe, it*/
 const tape = require('tap').test;
 const confi = require('../');
+const path = require('path');
 
 tape('ms helper', (assert) => {
   confi({
@@ -103,7 +104,7 @@ tape('includes truthy helper', (assert) => {
 tape('readFile helper', (assert) => {
   confi({
     config: {
-      file: `{{readFile("${__dirname}/conf2/default.yaml")}}`
+      file: `{{readFile("${path.join(__dirname, 'conf2', 'default.yaml')}")}}`
     }
   }, (err, config) => {
     assert.equal(err, null);
