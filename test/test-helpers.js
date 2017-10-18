@@ -73,15 +73,17 @@ tape('includes truthy helper', (assert) => {
   confi({
     path: './test/conf5'
   }, (err, config) => {
-    assert.equal(config.stringAmbiguous, true);
     assert.equal(config.stringTrue, true);
     assert.equal(config.booleanTrue, true);
     assert.equal(config.stringNumTrue, true);
+    assert.equal(config.stringNum2True, true);
     assert.equal(config.numTrue, true);
     assert.equal(config.stringFalse, false);
     assert.equal(config.booleanFalse, false);
     assert.equal(config.stringNumFalse, false);
+    assert.equal(config.stringNum2False, false);
     assert.equal(config.numFalse, false);
+    assert.equal(config.stringAmbiguous, false);
     assert.end();
   });
 });
