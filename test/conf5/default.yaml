@@ -1,3 +1,4 @@
+stringAmbiguous: '{{truthy("ambiguous")}}'
 stringTrue: '{{truthy("true")}}'
 booleanTrue: '{{truthy(true)}}'
 stringNumTrue: '{{truthy("1")}}'
