@@ -84,6 +84,17 @@ tape('includes truthy helper', (assert) => {
     assert.equal(config.stringNum2False, false);
     assert.equal(config.numFalse, false);
     assert.equal(config.stringAmbiguous, false);
+  });
+});
+
+tape('readFile helper', (assert) => {
+  confi({
+    config: {
+      file: `{{readFile("${__dirname}/conf2/default.yaml")}}`
+    }
+  }, (err, config) => {
+    assert.equal(err, null);
+    assert.equal(config.file.startsWith('multiple: true'), true);
     assert.end();
   });
 });
