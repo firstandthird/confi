@@ -3,13 +3,15 @@
 const tape = require('tap').test;
 const confi = require('../');
 
-tape('error if missing key', (assert) => {
-  confi({
-    config: {
-      found: '{{missing}}'
-    }
-  }, (err, config) => {
+tape('error if missing key', async (assert) => {
+  try {
+    const config = await confi({
+      config: {
+        found: '{{missing}}'
+      }
+    });
+  } catch (e) {
     assert.notEqual(err, null);
     assert.end();
-  });
+  }
 });
