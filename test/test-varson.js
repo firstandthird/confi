@@ -11,7 +11,7 @@ tape('error if missing key', async (assert) => {
       }
     });
   } catch (e) {
-    assert.notEqual(err, null);
+    assert.notEqual(e, null);
     assert.end();
   }
 });
