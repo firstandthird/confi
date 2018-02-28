@@ -70,7 +70,7 @@ tape('getEnv helper throws error if not defined and no fallback provided', async
       }
     });
   } catch (e) {
-    assert.equal(e.toString(), 'Environment variable TheArctic was not found and no fallback was specified');
+    assert.equal(e.toString(), 'Error: Environment variable TheArctic was not found and no fallback was specified');
     assert.end();
   }
 });
