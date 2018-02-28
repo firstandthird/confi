@@ -62,6 +62,19 @@ tape('getEnv helper with default', async (assert) => {
   assert.end();
 });
 
+tape('getEnv helper throws error if not defined and no fallback provided', async (assert) => {
+  try {
+    await confi({
+      config: {
+        test: '{{getEnv("TheArctic")}}'
+      }
+    });
+  } catch (e) {
+    assert.equal(e.toString(), 'Error: Environment variable TheArctic was not found and no fallback was specified');
+    assert.end();
+  }
+});
+
 tape('includes truthy helper', async (assert) => {
   const config = await confi({
     config: {
