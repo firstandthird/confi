@@ -9,22 +9,20 @@
     "url": "https://github.com/firstandthird/confi.git"
   },
   "dependencies": {
-    "async": "^2.4.0",
     "aug": "^2.0.0",
     "envload": "^0.1.0",
     "js-yaml": "^3.8.4",
     "ms": "^2.0.0",
-    "parse-dir": "3.0.0",
+    "parse-dir": "^4.0.0",
     "varson": "^2.0.3",
-    "wreck": "^12.2.0"
+    "wreck": "^14.0.2"
   },
   "devDependencies": {
-    "eslint": "^4.6.1",
-    "eslint-config-firstandthird": "^4.2.1",
-    "eslint-plugin-import": "2.7.0",
-    "hapi": "^16.1.1",
-    "tap": "^10.3.0",
-    "tap-spec": "^4.1.1"
+    "eslint": "^4.18.1",
+    "eslint-config-firstandthird": "^4.3.0",
+    "eslint-plugin-import": "^2.9.0",
+    "hapi": "^17.2.1",
+    "tap": "^10.3.0"
   },
   "keywords": [
     "config",
