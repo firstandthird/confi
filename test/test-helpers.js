@@ -4,6 +4,22 @@ const tape = require('tap').test;
 const confi = require('../');
 const path = require('path');
 
+tape('exists helper', async (assert) => {
+  process.env.TEST_VARIABLE = 'a test variable';
+  process.env.TEST_VARIABLE2 = 1;
+  const config = await confi({
+    string: '{{exists("TEST_VARIABLE")}}',
+    num: '{{exists("TEST_VARIABLE2")}}',
+    no: '{{exists("DOES_NOT_EXIST")}}',
+  });
+  assert.deepEqual(config, {
+    string: true,
+    num: true,
+    no: false,
+  });
+  assert.end();
+});
+/*
 tape('ms helper', async (assert) => {
   const config = await confi({
     config: {
@@ -114,3 +130,4 @@ tape('readFile helper', async (assert) => {
   assert.equal(config.file.startsWith('multiple: true'), true);
   assert.end();
 });
+*/
