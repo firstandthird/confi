@@ -4,6 +4,24 @@ const tape = require('tap').test;
 const confi = require('../');
 const path = require('path');
 
+tape('envExists helper', async (assert) => {
+  process.env.TEST_VARIABLE = 'a test variable';
+  process.env.TEST_VARIABLE2 = 1;
+  const config = await confi({
+    config: {
+      string: '{{envExists("TEST_VARIABLE")}}',
+      num: '{{envExists("TEST_VARIABLE2")}}',
+      no: '{{envExists("DOES_NOT_EXIST")}}',
+    }
+  });
+  assert.match(config, {
+    string: true,
+    num: true,
+    no: false,
+  });
+  assert.end();
+});
+
 tape('ms helper', async (assert) => {
   const config = await confi({
     config: {
