@@ -4,14 +4,14 @@ const tape = require('tap').test;
 const confi = require('../');
 const path = require('path');
 
-tape('exists helper', async (assert) => {
+tape('envExists helper', async (assert) => {
   process.env.TEST_VARIABLE = 'a test variable';
   process.env.TEST_VARIABLE2 = 1;
   const config = await confi({
     config: {
-      string: '{{exists("TEST_VARIABLE")}}',
-      num: '{{exists("TEST_VARIABLE2")}}',
-      no: '{{exists("DOES_NOT_EXIST")}}',
+      string: '{{envExists("TEST_VARIABLE")}}',
+      num: '{{envExists("TEST_VARIABLE2")}}',
+      no: '{{envExists("DOES_NOT_EXIST")}}',
     }
   });
   assert.match(config, {
