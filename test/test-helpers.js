@@ -62,6 +62,19 @@ tape('getEnv helper with default', async (assert) => {
   assert.end();
 });
 
+tape('getEnv helper with an empty default', async (assert) => {
+  const config = await confi({
+    config: {
+      test: '{{getEnv("CONFI_TEST2", "")}}'
+    }
+  });
+  assert.deepEqual(config, {
+    test: '',
+    env: 'dev'
+  });
+  assert.end();
+});
+
 tape('getEnv helper with default', async (assert) => {
   const config = await confi({
     config: {
