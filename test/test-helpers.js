@@ -119,7 +119,14 @@ tape('includes truthy helper', async (assert) => {
       booleanFalse: '{{truthy(false)}}',
       stringNumFalse: '{{truthy("-1")}}',
       numFalse: '{{truthy(-1)}}',
-      stringNum2False: '{{truthy("-10")}}'
+      stringNum2False: '{{truthy("-10")}}',
+      undef: '{{truthy(undefined)}}',
+      blank: '{{truthy("")}}',
+      zero: '{{truthy(0)}}',
+      zeroString: '{{truthy("0")}}',
+      one: '{{truthy(1)}}',
+      oneString: '{{truthy("1")}}',
+      nullVal: '{{truthy(null)}}',
     }
   });
   assert.equal(config.stringTrue, true);
@@ -133,6 +140,13 @@ tape('includes truthy helper', async (assert) => {
   assert.equal(config.stringNum2False, false);
   assert.equal(config.numFalse, false);
   assert.equal(config.stringAmbiguous, false);
+  assert.equal(config.undef, false);
+  assert.equal(config.blank, false);
+  assert.equal(config.zero, false);
+  assert.equal(config.zeroString, false);
+  assert.equal(config.one, true);
+  assert.equal(config.oneString, true);
+  assert.equal(config.nullVal, false);
   assert.end();
 });
 
