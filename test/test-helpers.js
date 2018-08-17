@@ -109,6 +109,8 @@ tape('getEnv helper throws error if not defined and no fallback provided', async
 tape('includes truthy helper', async (assert) => {
   const config = await confi({
     config: {
+      defaultNullVal: '{{truthy(null, true)}}',
+      defaultUndefinedVal: '{{truthy(undefined, true)}}',
       stringAmbiguous: '{{truthy("ambiguous")}}',
       stringTrue: '{{truthy("true")}}',
       booleanTrue: '{{truthy(true)}}',
@@ -147,6 +149,8 @@ tape('includes truthy helper', async (assert) => {
   assert.equal(config.one, true);
   assert.equal(config.oneString, true);
   assert.equal(config.nullVal, false);
+  assert.equal(config.defaultNullVal, true);
+  assert.equal(config.defaultUndefinedVal, true);
   assert.end();
 });
 
