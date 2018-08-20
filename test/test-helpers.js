@@ -180,5 +180,15 @@ tape('readFileOrEnv helper', async (assert) => {
   });
   delete process.env.HONGO_URL_FILE;
   assert.equal(config.val1.startsWith('multiple: true'), true);
-  assert.end();
+  try {
+    await confi({
+      config: {
+        test: '{{getEnvOrFile("TheArctic")}}'
+      }
+    });
+  } catch (e) {
+    assert.equal(e.toString(), 'Error: Environment variable TheArctic was not found and no fallback was specified');
+    return assert.end();
+  }
+  assert.fail();
 });
