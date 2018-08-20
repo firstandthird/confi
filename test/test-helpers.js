@@ -163,3 +163,22 @@ tape('readFile helper', async (assert) => {
   assert.equal(config.file.startsWith('multiple: true'), true);
   assert.end();
 });
+
+tape('readFileOrEnv helper', async (assert) => {
+  process.env.HONGO_URL = 'hongodb://blah.db.com:1331';
+  let config = await confi({
+    config: {
+      val1: '{{getEnvOrFile("HONGO_URL")}}',
+    }
+  });
+  assert.equal(config.val1, process.env.HONGO_URL);
+  process.env.HONGO_URL_FILE = `${path.join(__dirname, 'conf2', 'default.yaml')}`;
+  config = await confi({
+    config: {
+      val1: '{{getEnvOrFile("HONGO_URL")}}',
+    }
+  });
+  delete process.env.HONGO_URL_FILE;
+  assert.equal(config.val1.startsWith('multiple: true'), true);
+  assert.end();
+});
