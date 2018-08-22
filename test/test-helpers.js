@@ -1,10 +1,11 @@
 'use strict';
-/*global describe, it*/
-const tape = require('tap').test;
+const t = require('tap');
 const confi = require('../');
 const path = require('path');
 
-tape('envExists helper', async (assert) => {
+//t.runOnly = true;
+
+t.test('envExists helper', async (assert) => {
   process.env.TEST_VARIABLE = 'a test variable';
   process.env.TEST_VARIABLE2 = 1;
   const config = await confi({
@@ -22,7 +23,7 @@ tape('envExists helper', async (assert) => {
   assert.end();
 });
 
-tape('ms helper', async (assert) => {
+t.test('ms helper', async (assert) => {
   const config = await confi({
     config: {
       oneDay: '{{ms("1d")}}'
@@ -35,7 +36,7 @@ tape('ms helper', async (assert) => {
   assert.end();
 });
 
-tape('getEnv helper', async (assert) => {
+t.test('getEnv helper', async (assert) => {
   process.env.CONFI_TEST = 'yep';
   const config = await confi({
     config: {
@@ -49,7 +50,7 @@ tape('getEnv helper', async (assert) => {
   assert.end();
 });
 
-tape('getEnv helper with default', async (assert) => {
+t.test('getEnv helper with default', async (assert) => {
   const config = await confi({
     config: {
       test: '{{getEnv("CONFI_TEST2", "nope")}}'
@@ -62,7 +63,7 @@ tape('getEnv helper with default', async (assert) => {
   assert.end();
 });
 
-tape('getEnv helper with an empty default', async (assert) => {
+t.test('getEnv helper with an empty default', async (assert) => {
   const config = await confi({
     config: {
       test: '{{getEnv("CONFI_TEST2", "")}}'
@@ -75,7 +76,7 @@ tape('getEnv helper with an empty default', async (assert) => {
   assert.end();
 });
 
-tape('getEnv helper with default', async (assert) => {
+t.test('getEnv helper with default', async (assert) => {
   const config = await confi({
     config: {
       math: '{{add(4, 5)}}'
@@ -93,7 +94,7 @@ tape('getEnv helper with default', async (assert) => {
   assert.end();
 });
 
-tape('getEnv helper throws error if not defined and no fallback provided', async (assert) => {
+t.test('getEnv helper throws error if not defined and no fallback provided', async (assert) => {
   try {
     await confi({
       config: {
@@ -106,7 +107,8 @@ tape('getEnv helper throws error if not defined and no fallback provided', async
   }
 });
 
-tape('includes truthy helper', async (assert) => {
+t.test('includes truthy helper', async (assert) => {
+  process.env.TRUTHY_VAR = '1';
   const config = await confi({
     config: {
       defaultNullVal: '{{truthy(null, true)}}',
@@ -154,7 +156,7 @@ tape('includes truthy helper', async (assert) => {
   assert.end();
 });
 
-tape('readFile helper', async (assert) => {
+t.test('readFile helper', async (assert) => {
   const config = await confi({
     config: {
       file: `{{readFile("${path.join(__dirname, 'conf2', 'default.yaml')}")}}`
@@ -164,7 +166,7 @@ tape('readFile helper', async (assert) => {
   assert.end();
 });
 
-tape('readFileOrEnv helper', async (assert) => {
+t.test('readFileOrEnv helper', async (assert) => {
   process.env.HONGO_URL = 'hongodb://blah.db.com:1331';
   let config = await confi({
     config: {
