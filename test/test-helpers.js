@@ -111,6 +111,13 @@ t.test('includes truthy helper', async (assert) => {
   process.env.TRUTHY_VAR = '1';
   const config = await confi({
     config: {
+      anotherVar: 'true',
+      envVar: '{{getEnv("TRUTHY_VAR")}}',
+      varExists: '{{truthy(anotherVar)}}',
+      envVarExists: '{{truthy(ENV.TRUTHY_VAR)}}',
+      envVarExists2: '{{truthy(getEnv("TRUTHY_VAR"))}}',
+      envVarExists3: '{{truthy(envVar)}}',
+      envVarNoExists: '{{truthy(ENV.TRUTHY_VAR2)}}',
       defaultNullVal: '{{truthy(null, true)}}',
       defaultUndefinedVal: '{{truthy(undefined, true)}}',
       stringAmbiguous: '{{truthy("ambiguous")}}',
@@ -133,6 +140,12 @@ t.test('includes truthy helper', async (assert) => {
       nullVal: '{{truthy(null)}}',
     }
   });
+  assert.equal(config.envVar, '1');
+  assert.equal(config.varExists, true);
+  assert.equal(config.envVarExists, true);
+  assert.equal(config.envVarExists2, true);
+  assert.equal(config.envVarExists3, true);
+  assert.equal(config.envVarNoExists, false);
   assert.equal(config.stringTrue, true);
   assert.equal(config.booleanTrue, true);
   assert.equal(config.stringNumTrue, true);
