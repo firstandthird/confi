@@ -207,3 +207,20 @@ t.test('readFileOrEnv helper', async (assert) => {
   }
   assert.fail();
 });
+
+t.test('hasValue helper', async (assert) => {
+  const config = await confi({
+    config: {
+      a: '123',
+      ahasValue: '{{hasValue(a)}}', //should be true
+      b: '',
+      bhasValue: '{{hasValue(b)}}', //false
+    }
+  });
+  assert.match(config, {
+    a: '123',
+    ahasValue: true,
+    bhasValue: false,
+  });
+  assert.end();
+});
