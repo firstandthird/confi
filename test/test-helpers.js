@@ -63,20 +63,28 @@ t.test('getEnv helper with default', async (assert) => {
   assert.end();
 });
 
-t.test('getEnv helper with an empty default', async (assert) => {
+t.test('getEnv helper with a false default', async (assert) => {
+  process.env.DEBUG = 'false';
   const config = await confi({
     config: {
-      test: '{{getEnv("CONFI_TEST2", "")}}'
+      envs: {
+        debug: '{{getEnv("DEBUG", false)}}',
+      },
+      enableDebug: '{{truthy(envs.debug)}}'
     }
   });
   assert.deepEqual(config, {
-    test: '',
+    envs: {
+      debug: 'false'
+    },
+    enableDebug: false,
     env: 'dev'
   });
   assert.end();
 });
 
-t.test('getEnv helper with default', async (assert) => {
+
+t.test('custom helper', async (assert) => {
   const config = await confi({
     config: {
       math: '{{add(4, 5)}}'
