@@ -8,17 +8,20 @@ const path = require('path');
 t.test('envExists helper', async (assert) => {
   process.env.TEST_VARIABLE = 'a test variable';
   process.env.TEST_VARIABLE2 = 1;
+  process.env.TEST_VAR3 = '';
   const config = await confi({
     config: {
       string: '{{envExists("TEST_VARIABLE")}}',
       num: '{{envExists("TEST_VARIABLE2")}}',
       no: '{{envExists("DOES_NOT_EXIST")}}',
+      var3: '{{envExists("TEST_VAR3")}}'
     }
   });
   assert.match(config, {
     string: true,
     num: true,
     no: false,
+    var3: true //should this be false?
   });
   assert.end();
 });
