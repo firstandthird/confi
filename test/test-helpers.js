@@ -223,12 +223,16 @@ t.test('hasValue helper', async (assert) => {
       ahasValue: '{{hasValue(a)}}', //should be true
       b: '',
       bhasValue: '{{hasValue(b)}}', //false
+      c: '{{getEnv("BLAH", "")}}',
+      chasValue: '{{hasValue(c)}}'
     }
   });
   assert.match(config, {
     a: '123',
     ahasValue: true,
     bhasValue: false,
+    c: '',
+    chasValue: false
   });
   assert.end();
 });
