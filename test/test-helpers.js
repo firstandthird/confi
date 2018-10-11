@@ -4,7 +4,6 @@ const confi = require('../');
 const path = require('path');
 
 //t.runOnly = true;
-
 t.test('envExists helper', async (assert) => {
   process.env.TEST_VARIABLE = 'a test variable';
   process.env.TEST_VARIABLE2 = 1;
@@ -222,5 +221,27 @@ t.test('hasValue helper', async (assert) => {
     ahasValue: true,
     bhasValue: false,
   });
+  assert.end();
+});
+
+t.test('includes truthyEnv helper', async (assert) => {
+  process.env.VAR1 = '1';
+  process.env.VAR2 = 'true';
+  process.env.VAR3 = true;
+  process.env.VAR4 = 'false';
+  const config = await confi({
+    config: {
+      var1: '{{truthyEnv("VAR1", false)}}',
+      var2: '{{truthyEnv("VAR2", false)}}',
+      var3: '{{truthyEnv("VAR3", false)}}',
+      var4: '{{truthyEnv("VAR4", false)}}',
+      undef: '{{truthyEnv("UNDEF", "not defined")}}',
+    }
+  });
+  assert.equal(config.var1, true);
+  assert.equal(config.var2, true);
+  assert.equal(config.var3, true);
+  assert.equal(config.var4, false);
+  assert.equal(config.undef, 'not defined');
   assert.end();
 });
