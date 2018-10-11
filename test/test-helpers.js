@@ -229,12 +229,14 @@ t.test('includes truthyEnv helper', async (assert) => {
   process.env.VAR2 = 'true';
   process.env.VAR3 = true;
   process.env.VAR4 = 'false';
+  process.env.VAR5 = '';
   const config = await confi({
     config: {
       var1: '{{truthyEnv("VAR1", false)}}',
       var2: '{{truthyEnv("VAR2", false)}}',
       var3: '{{truthyEnv("VAR3", false)}}',
       var4: '{{truthyEnv("VAR4", false)}}',
+      var5: '{{truthyEnv("VAR5", false)}}',
       undef: '{{truthyEnv("UNDEF", "not defined")}}',
     }
   });
@@ -242,6 +244,7 @@ t.test('includes truthyEnv helper', async (assert) => {
   assert.equal(config.var2, true);
   assert.equal(config.var3, true);
   assert.equal(config.var4, false);
+  assert.equal(config.var5, false);
   assert.equal(config.undef, 'not defined');
   assert.end();
 });
