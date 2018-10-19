@@ -68,3 +68,11 @@ tape('will get package.json from a specific "path"  and property when indicated'
   assert.equal(config.redHouse, true);
   assert.end();
 });
+
+tape('will handle error if package does not exist', async(assert) => {
+  const config = await confi({
+    package: 'doesNotExist'
+  });
+  assert.equal(config.env, 'dev');
+  assert.end();
+});
