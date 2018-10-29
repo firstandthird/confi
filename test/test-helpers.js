@@ -268,10 +268,13 @@ t.test('getEnvInt helper', async (assert) => {
   process.env.CONFI_TEST = '123';
   const config = await confi({
     config: {
-      test: '{{getEnvInt("CONFI_TEST")}}'
+      test: '{{getEnvInt("CONFI_TEST")}}',
+      test2: '{{getEnv("CONFI_TEST")}}'
     }
   });
   assert.isA(config.test, 'number');
   assert.equal(config.test, 123);
+  assert.isA(config.test2, 'string');
+  assert.equal(config.test2, '123');
   assert.end();
 });
