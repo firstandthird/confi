@@ -4,7 +4,6 @@ const confi = require('../');
 const path = require('path');
 
 //t.runOnly = true;
-/*
 t.test('envExists helper', async (assert) => {
   process.env.TEST_VARIABLE = 'a test variable';
   process.env.TEST_VARIABLE2 = 1;
@@ -264,7 +263,6 @@ t.test('includes truthyEnv helper', async (assert) => {
   assert.equal(config.undef, 'not defined');
   assert.end();
 });
-*/
 
 t.test('getEnvInt helper', async (assert) => {
   process.env.CONFI_TEST = '123';
