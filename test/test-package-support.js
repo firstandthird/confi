@@ -69,10 +69,13 @@ tape('will get package.json from a specific "path"  and property when indicated'
   assert.end();
 });
 
-tape('will handle error if package does not exist', async(assert) => {
-  const config = await confi({
-    package: 'doesNotExist'
-  });
-  assert.equal(config.env, 'dev');
+tape('will throw error if package does not exist', async(assert) => {
+  try {
+    await confi({
+      package: 'doesNotExist'
+    });
+  } catch (e) {
+    assert.ok(e);
+  }
   assert.end();
 });
