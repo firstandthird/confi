@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "aug": "^3.0.1",
+    "confi-helpers": "0.0.1",
     "envload": "^0.1.0",
     "js-yaml": "^3.8.4",
-    "ms": "^2.0.0",
     "parse-dir": "^4.0.0",
     "varson": "^2.1.0",
     "wreck": "^14.0.2"
