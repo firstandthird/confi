@@ -13,7 +13,7 @@
     "confi-helpers": "0.0.1",
     "envload": "^0.1.0",
     "js-yaml": "^3.13.1",
-    "parse-dir": "^4.0.0",
+    "parse-dir": "^4.0.1",
     "varson": "^2.1.0",
     "wreck": "^14.2.0"
   },
