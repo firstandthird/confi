@@ -31,6 +31,6 @@
   ],
   "scripts": {
     "test": "tap test/test-*.js --cov",
-    "lint": "eslint ."
+    "lint": "eslint ./lib"
   }
 }
