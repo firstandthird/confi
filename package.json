@@ -34,7 +34,7 @@
     "env"
   ],
   "scripts": {
-    "test": "tap test/test-*.js",
+    "test": "tap test/test-*.js --disable-coverage",
     "lint": "eslint ./lib"
   }
 }
