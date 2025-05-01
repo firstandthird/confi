@@ -11,7 +11,7 @@ tape('error if missing key', async (assert) => {
       }
     });
   } catch (e) {
-    assert.equal(typeof e, object);
+    assert.equal(typeof e, 'object');
     assert.end();
   }
 });
