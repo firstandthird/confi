@@ -24,9 +24,6 @@
     "eslint-plugin-import": "^2.9.0",
     "tap": "^21.1.0"
   },
-  "tap": {
-    "check-coverage": false
-  },
   "keywords": [
     "config",
     "settings",
