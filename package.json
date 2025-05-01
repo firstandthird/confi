@@ -25,7 +25,6 @@
     "tap": "^21.1.0"
   },
   "tap": {
-    "coverage": false,
     "check-coverage": false
   },
   "keywords": [
